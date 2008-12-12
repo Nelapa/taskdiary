@@ -1,0 +1,28 @@
+<h1> <%= h @task.name %> </h1>
+
+
+
+<strong>Completed: </strong>
+<% if not @task.complete %>
+  no &nbsp;<strong>Status: </strong>
+  <% if @task.status %>
+    active
+  <% else %>
+     delayed
+  <% end %>
+  <% else %>
+  yes
+<% end %>
+<br>
+<strong>Due to: </strong><%= @task.due %>
+<% if not @task.complete and @task.due < Date.today %>
+(expired!!!)
+<%end%>
+
+<hr>
+<% if @task.description %>
+<strong>Description: </strong><%= h @task.description %><hr>
+<% end %>
+<%= link_to 'Edit task', edit_task_path %>&nbsp;
+<%= link_to 'Delete task', task_path(@task), :method => :delete, :confirm => 'Really delete?' %>
+<hr> <%= link_to 'To task list', tasks_path %>

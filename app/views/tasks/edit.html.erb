@@ -1,0 +1,10 @@
+<h1>Editing task</h1>
+
+<% form_for @task do |form| %>
+  <strong>Name:</strong><%= form.text_field  :name %><br>
+  <strong>Active:</strong><%= form.check_box :status %>
+  <strong>Completed:</strong><%= form.check_box :complete %><br>
+  <strong>Description: </strong><br><%= form.text_area  :description, :rows=>7 %><br>
+  <strong>Date:</strong><%= form.date_select  :due %><br>
+   <%= form.submit 'Save changes' %>
+<% end %>
