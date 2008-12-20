@@ -23,6 +23,9 @@
 <% if @task.description %>
 <strong>Description: </strong><%= h @task.description %><hr>
 <% end %>
+<% if @current_user %>
 <%= link_to 'Edit task', edit_task_path %>&nbsp;
 <%= link_to 'Delete task', task_path(@task), :method => :delete, :confirm => 'Really delete?' %>
-<hr> <%= link_to 'To task list', tasks_path %>
+<hr>
+<% end %>
+ <%= link_to 'To task list', tasks_path %>

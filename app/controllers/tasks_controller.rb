@@ -7,8 +7,10 @@ class TasksController < ApplicationController
   def create
     @task = Task.new params[:task]
     if @task.save
+      flash[:notice] = 'Task created successfully'
       redirect_to tasks_path
     else
+      flash[:error] = 'Error creating task'
       render :action => :new
     end
   end
@@ -39,8 +41,10 @@ class TasksController < ApplicationController
   def update
     @task = Task.find params[:id]
     if @task.update_attributes(params[:task])
+      flash[:notice] = 'Task updated successfully'
       redirect_to task_path
   else
+    flash[:error] = 'Error updating'
     render :action => :edit, :id => params[:id] 
    end
   end   
